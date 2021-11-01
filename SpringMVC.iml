@@ -73,8 +73,8 @@
     <orderEntry type="library" name="Maven: org.hibernate.orm:hibernate-c3p0:6.0.0.Beta1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.mchange:c3p0:0.9.5.5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.mchange:mchange-commons-java:0.2.19" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.2.0.Final" level="project" />
-    <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:7.0.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:3.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet.jsp:javax.servlet.jsp-api:2.3.3" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
