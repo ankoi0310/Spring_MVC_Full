@@ -29,7 +29,7 @@
     <!-- Define Datasource & Connection Pool -->
     <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="jdbcUrl" value="jdbc:sqlserver://localhost:1433;databaseName=SpringMVC;"/>
+        <property name="jdbcUrl" value="jdbc:sqlserver://localhost:1433;databaseName=customer_tracker;"/>
         <property name="user" value="sa"/>
         <property name="password" value="ankoi03102001"/>
 

@@ -20,7 +20,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="SpringMVC" />
+          <factory-entry name="SpringMVC" value="ca94a784-9dc9-4467-9e24-2b3862c24140" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
@@ -30,7 +30,9 @@
     </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="sessionFactory" />
+        </datasource-map>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -87,6 +89,5 @@
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.4.0-b180830.0359" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.microsoft.sqlserver:mssql-jdbc:9.4.0.jre16" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate.orm:hibernate-core:6.0.0.Beta1" level="project" />
   </component>
 </module>
