@@ -21,22 +21,32 @@
         <div class="row pb-3">
             <input type="button" class="btn btn-primary" value="Add customer" onclick="window.location.href='showFormForAdd'; return false;">
         </div>
-        <table class="table">
-            <thead class="thead-dark">
+        <div class="row">
+            <table class="table">
+                <thead class="thead-dark">
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Email</th>
-            </thead>
-            <tbody>
-            <c:forEach items="${customers}" var="customer">
-                <tr>
-                    <td>${customer.firstName}</td>
-                    <td>${customer.lastName}</td>
-                    <td>${customer.email}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                <th scope="col">Action</th>
+                </thead>
+                <tbody>
+                <c:forEach items="${customers}" var="customer">
+                    <%--  Example link: https://.../customer/showFormForUpdate?customerId=1 --%>
+                    <c:url var="updateLink" value="/customer/showFormForUpdate">
+                        <c:param name="customerId" value="${customer.id}" />
+                    </c:url>
+                    <tr>
+                        <td>${customer.firstName}</td>
+                        <td>${customer.lastName}</td>
+                        <td>${customer.email}</td>
+                        <td>
+                            <a href="${updateLink}">Update</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

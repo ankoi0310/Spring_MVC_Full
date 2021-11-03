@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="d-flex justify-content-center py-5">
-        <h2>Customer Relationship Manager</h2>
+        <h2>Customer Form</h2>
     </div>
     <div class="container">
         <form:form action="saveCustomer" modelAttribute="customer" method="post">
