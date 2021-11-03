@@ -30,4 +30,14 @@ public class CustomerController {
 
         return "list-customers";
     }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model model) {
+
+        // Create model attribute to bind form data
+        Customer customer = new Customer();
+        model.addAttribute("customer", customer);
+
+        return "customer-form";
+    }
 }
