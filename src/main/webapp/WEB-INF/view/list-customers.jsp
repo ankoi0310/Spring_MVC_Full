@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Huỳnh Văn Hữu Ân
-  Date: 10/30/2021
-  Time: 10:39 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.koi.springmvc.constant.SortCustomerColumn" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -36,9 +30,19 @@
         <div class="row">
             <table class="table table-bordered">
                 <thead class="thead-dark text-center">
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Email</th>
+                    <%-- Links for sorting --%>
+                    <c:url value="/customer/list" var="firstNameSort">
+                        <c:param name="sort" value="<%=String.valueOf(SortCustomerColumn.FIRST_NAME)%>"/>
+                    </c:url>
+                    <c:url value="/customer/list" var="lastNameSort">
+                        <c:param name="sort" value="<%=String.valueOf(SortCustomerColumn.LAST_NAME)%>"/>
+                    </c:url>
+                    <c:url value="/customer/list" var="emailSort">
+                        <c:param name="sort" value="<%=String.valueOf(SortCustomerColumn.EMAIL)%>"/>
+                    </c:url>
+                    <th scope="col"><a href="${firstNameSort}">First Name</a></th>
+                    <th scope="col"><a href="${lastNameSort}">Last Name</a></th>
+                    <th scope="col"><a href="${emailSort}">Email</a></th>
                     <th scope="col">Action</th>
                 </thead>
                 <tbody>

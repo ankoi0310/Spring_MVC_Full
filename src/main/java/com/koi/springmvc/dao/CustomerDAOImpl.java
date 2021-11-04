@@ -1,5 +1,6 @@
 package com.koi.springmvc.dao;
 
+import com.koi.springmvc.constant.SortCustomerColumn;
 import com.koi.springmvc.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,11 +21,23 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public List<Customer> getCustomers() {
+    public List<Customer> getCustomers(int sortField) {
         // Get current hibernate session
         Session session = sessionFactory.getCurrentSession();
 
-        Query<Customer> query = session.createQuery("from Customer", Customer.class);
+        String sort = null;
+        switch (sortField) {
+            case SortCustomerColumn.LAST_NAME:
+                sort = "last_name";
+                break;
+            case SortCustomerColumn.EMAIL:
+                sort = "email";
+                break;
+            default:
+                sort = "first_name";
+        }
+
+        Query<Customer> query = session.createQuery("from Customer order by " + sort, Customer.class);
 
         return query.getResultList();
     }

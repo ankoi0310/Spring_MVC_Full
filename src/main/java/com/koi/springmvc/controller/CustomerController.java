@@ -1,5 +1,6 @@
 package com.koi.springmvc.controller;
 
+import com.koi.springmvc.constant.SortCustomerColumn;
 import com.koi.springmvc.entity.Customer;
 import com.koi.springmvc.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,14 @@ public class CustomerController {
     }
 
     @GetMapping("/list")
-    public String listCustomer(Model model) {
-        List<Customer> customers = customerService.getCustomers();
+    public String listCustomer(@RequestParam(required = false) String sortField, Model model) {
+        List<Customer> customers = null;
+        if (sortField != null) {
+            int sort = Integer.parseInt(sortField);
+            customers = customerService.getCustomers(sort);
+        } else {
+            customers = customerService.getCustomers(SortCustomerColumn.FIRST_NAME);
+        }
 
         model.addAttribute("customers", customers);
 
