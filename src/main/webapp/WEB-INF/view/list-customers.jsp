@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>List Customer</title>
@@ -18,16 +19,27 @@
         <h2>Customer Relationship Manager</h2>
     </div>
     <div class="container">
-        <div class="row pb-3">
-            <input type="button" class="btn btn-primary" value="Add customer" onclick="window.location.href='showFormForAdd'; return false;">
+        <div class="d-flex justify-content-between align-items-center">
+            <input type="button" class="btn btn-primary form-group row" value="Add customer"
+               onclick="window.location.href='showFormForAdd'; return false;">
+            <form:form action="search" method="get">
+                <div class="form-group row">
+                    <div class="col-6">
+                        <input name="keyword" class="form-control mr-2" id="keyword" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+                    <div class="col-6">
+                        <input type="submit" class="btn btn-success" value="Search">
+                    </div>
+                </div>
+            </form:form>
         </div>
         <div class="row">
-            <table class="table">
-                <thead class="thead-dark">
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Action</th>
+            <table class="table table-bordered">
+                <thead class="thead-dark text-center">
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
                 </thead>
                 <tbody>
                 <c:forEach items="${customers}" var="customer">

@@ -62,4 +62,11 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return "redirect:/customer/list";
     }
+
+    @GetMapping("/search")
+    public String searchCustomer(@RequestParam("keyword") String keyword, Model model) {
+        List<Customer> customers = customerService.searchCustomer(keyword);
+        model.addAttribute("customers", customers);
+        return "list-customers";
+    }
 }
