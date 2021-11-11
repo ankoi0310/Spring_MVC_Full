@@ -35,32 +35,14 @@
         }
 
         .card {
-            height: 370px;
             margin-top: auto;
             margin-bottom: auto;
             width: 400px;
             background-color: rgba(0,0,0,0.5) !important;
         }
 
-        .social_icon span {
-            font-size: 60px;
-            margin-left: 10px;
-            color: #FFC312;
-        }
-
-        .social_icon span:hover {
-            color: white;
-            cursor: pointer;
-        }
-
         .card-header h3 {
             color: white;
-        }
-
-        .social_icon {
-            position: absolute;
-            right: 20px;
-            top: -45px;
         }
 
         .input-group-prepend span {
@@ -108,43 +90,57 @@
 </head>
 <body>
     <div class="container">
-    <div class="d-flex justify-content-center h-100">
-        <div class="card">
-            <div class="card-header">
-                <h3>Sign In</h3>
-            </div>
-            <div class="card-body">
-                <form:form action="${pageContext.request.contextPath}/authenticateUser" method="post">
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" name="username" class="form-control" placeholder="username">
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" name="password" class="form-control" placeholder="password">
-                    </div>
-<%--                    <div class="row align-items-center remember">--%>
-<%--                        <input type="checkbox">Remember Me--%>
-<%--                    </div>--%>
-                    <div class="form-group">
-                        <input type="submit" value="Login" class="btn float-right login_btn">
-                    </div>
-                </form:form>
-            </div>
-            <div class="card-footer">
-                <div class="d-flex justify-content-center links">
-                    Don't have an account?<a href="#">Sign Up</a>
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign In</h3>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <a href="#">Forgot your password?</a>
+                <div class="container">
+                    <%-- If login fail, Spring security will return an error param --%>
+                    <c:if test="${param.error != null}">
+                        <div class="alert alert-danger" role="alert">
+                            Sorry! You entered invalid username/password
+                        </div>
+                    </c:if>
+                    <%-- If login fail, Spring security will return an error param --%>
+                    <c:if test="${param.logout != null}">
+                        <div class="alert alert-success" role="alert">
+                            You have been logged out.
+                        </div>
+                    </c:if>
+                </div>
+                <div class="card-body">
+                    <form:form action="${pageContext.request.contextPath}/authenticateUser" method="post">
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" name="username" class="form-control" placeholder="username">
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="password" class="form-control" placeholder="password">
+                        </div>
+    <%--                    <div class="row align-items-center remember">--%>
+    <%--                        <input type="checkbox">Remember Me--%>
+    <%--                    </div>--%>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn float-right login_btn">
+                        </div>
+                    </form:form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account?<a href="#">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="#">Forgot your password?</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>

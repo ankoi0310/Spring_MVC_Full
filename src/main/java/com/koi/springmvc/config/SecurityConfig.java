@@ -33,6 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Spring Security provides by default (no code require)
                 .loginProcessingUrl("/authenticateUser")
                 // Allow everyone to see login page
+                .permitAll()
+                .and()
+                .logout()
                 .permitAll();
     }
 }

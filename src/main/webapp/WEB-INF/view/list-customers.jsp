@@ -9,6 +9,13 @@
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
+    <div class="container">
+        <div class="d-flex align-items-end flex-column" style="height: 75px;">
+            <form:form action="${pageContext.request.contextPath}/logout" method="post" cssClass="mt-auto">
+                <input type="submit" class="btn btn-success" value="Logout"/>
+            </form:form>
+        </div>
+    </div>
     <div class="d-flex justify-content-center py-5">
         <h2>Customer Relationship Manager</h2>
     </div>
