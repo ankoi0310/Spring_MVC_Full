@@ -27,6 +27,10 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:5.3.12" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.3.12" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:5.3.12" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.5.3" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.5.3" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-crypto:5.5.3" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.5.3" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.7" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.14.1" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.14.1" />
