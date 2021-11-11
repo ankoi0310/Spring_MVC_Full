@@ -26,15 +26,16 @@ public class CustomerDAOImpl implements CustomerDAO {
         Session session = sessionFactory.getCurrentSession();
 
         String sort = null;
+
         switch (sortField) {
             case SortCustomerColumn.LAST_NAME:
-                sort = "last_name";
+                sort = "lastName";
                 break;
             case SortCustomerColumn.EMAIL:
                 sort = "email";
                 break;
             default:
-                sort = "first_name";
+                sort = "firstName";
         }
 
         Query<Customer> query = session.createQuery("from Customer order by " + sort, Customer.class);
@@ -64,10 +65,12 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public List<Customer> searchCustomer(String keyword) {
         Session session = sessionFactory.getCurrentSession();
-        Query<Customer> query = session.createQuery("from Customer", Customer.class);
+        Query<Customer> query = null;
         if (keyword != null && keyword.trim().length() > 0) {
             query = session.createQuery("from Customer where lower(firstName) like :name or lower(lastName) like :name", Customer.class);
             query.setParameter("name", "%" + keyword + "%");
+        } else {
+            query = session.createQuery("from Customer", Customer.class);
         }
 
         return query.getResultList();

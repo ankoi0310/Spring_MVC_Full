@@ -22,11 +22,11 @@ public class CustomerController {
     }
 
     @GetMapping("/list")
-    public String listCustomer(@RequestParam(required = false) String sortField, Model model) {
+    public String listCustomer(Model model, @RequestParam(required = false) String sort) {
         List<Customer> customers = null;
-        if (sortField != null) {
-            int sort = Integer.parseInt(sortField);
-            customers = customerService.getCustomers(sort);
+        if (sort != null) {
+            int sortField = Integer.parseInt(sort);
+            customers = customerService.getCustomers(sortField);
         } else {
             customers = customerService.getCustomers(SortCustomerColumn.FIRST_NAME);
         }
