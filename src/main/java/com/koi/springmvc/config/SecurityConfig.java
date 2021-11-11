@@ -2,6 +2,7 @@ package com.koi.springmvc.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -15,5 +16,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.inMemoryAuthentication().withUser(user.username("koi").password("password").roles("ADMIN"));
         auth.inMemoryAuthentication().withUser(user.username("an").password("password").roles("EMPLOYEE"));
+    }
+
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .authorizeRequests()
+                // Any request must be authenticated (must be logged in)
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                // URL for custome login page
+                // Must use field name "username" and "password"
+                .loginPage("/showLoginPage")
+                // Spring Security provides by default (no code require)
+                .loginProcessingUrl("/authenticateUser")
+                // Allow everyone to see login page
+                .permitAll();
     }
 }
