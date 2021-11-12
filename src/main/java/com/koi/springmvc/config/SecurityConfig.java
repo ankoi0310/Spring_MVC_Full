@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Any request must be authenticated (must be logged in)
                 .antMatchers("/resources/**").permitAll()
                 .anyRequest().authenticated()
-                .antMatchers("/").hasRole("EMPLOYEE")
+                .antMatchers("/customer/**").hasRole("EMPLOYEE")
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
