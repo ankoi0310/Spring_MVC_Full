@@ -4,8 +4,10 @@ import com.koi.springmvc.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-public class UserDAOImpl implements UserDAO{
+@Repository
+public class UserDAOImpl implements UserDAO {
 
     private SessionFactory sessionFactory;
 
