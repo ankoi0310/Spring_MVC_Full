@@ -1,13 +1,12 @@
 package com.koi.springmvc.service;
 
 import com.koi.springmvc.dao.UserDAO;
-import com.koi.springmvc.entity.Authority;
-import com.koi.springmvc.entity.User;
+import com.koi.springmvc.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,12 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("myUserDetailsService")
-public class MyUserDetailsService implements UserDetailsService {
+public class UserServiceImpl implements UserService {
 
     private UserDAO userDAO;
 
     @Autowired
-    public MyUserDetailsService(UserDAO userDAO) {
+    public UserServiceImpl(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
@@ -29,12 +28,15 @@ public class MyUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userDAO.findByUserName(username);
-        List<Authority> authorityList = user.getAuthorities();
+        com.koi.springmvc.entity.User user = userDAO.findByUserName(username);
+        if (user == null)
+            throw new UsernameNotFoundException("Invalid username or password!");
+
+        List<Role> roleList = user.getRoles();
 
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-        for (Authority authority : authorityList) {
-            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority.getAuthority());
+        for (Role role : roleList) {
+            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getName());
             grantedAuthorityList.add(grantedAuthority);
         }
 
