@@ -1,10 +1,8 @@
 package com.koi.springmvc.entity;
 
-import com.koi.springmvc.validation.FieldMatch;
-import com.koi.springmvc.validation.ValidEmail;
 import jakarta.validation.constraints.Size;
 
-@FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
+// @FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
 public class RegisteredUser {
     @Size(min = 1, message = "is required")
     private String userName;
@@ -12,7 +10,7 @@ public class RegisteredUser {
     private String password;
     @Size(min = 1, message = "is required")
     private String matchingPassword;
-    @ValidEmail
+    // @ValidEmail
     private String email;
     public RegisteredUser() {
     }
