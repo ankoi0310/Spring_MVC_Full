@@ -1,5 +1,8 @@
 package com.koi.springmvc.entity;
 
+import com.koi.springmvc.validation.FieldMatch;
+
+@FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
 public class RegisteredUser {
 
     private String userName;
