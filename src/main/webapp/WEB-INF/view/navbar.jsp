@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
     <a class="navbar-brand" href="#">CRM</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -18,10 +18,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/customer/list">List Customer</a>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin">Admin</a>
-            </li>
+            <security:authorize access="hasRole('ADMIN')">
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin">Admin</a>
+                </li>
+            </security:authorize>
         </ul>
         <form:form method="post" action="${pageContext.request.contextPath}/logout" class="form-inline my-2 my-lg-0">
             <input class="btn btn-outline-success" type="submit" value="Logout">
