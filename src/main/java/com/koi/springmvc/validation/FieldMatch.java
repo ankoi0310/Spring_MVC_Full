@@ -15,7 +15,7 @@ public @interface FieldMatch {
     String first();
     String second();
 
-    Class<?>[] group() default {};
+    Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 
 }
