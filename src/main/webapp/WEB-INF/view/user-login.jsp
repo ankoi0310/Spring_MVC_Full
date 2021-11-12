@@ -104,13 +104,15 @@
                     </c:if>
                     <%-- If login fail, Spring security will return an error param --%>
                     <c:if test="${param.logout != null}">
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-primary" role="alert">
                             You have been logged out.
                         </div>
                     </c:if>
                 </div>
                 <div class="card-body">
                     <form:form action="${pageContext.request.contextPath}/authenticateUser" method="post">
+                        <%-- Manual adding CSRF tokens --%>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
