@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -24,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        auth.inMemoryAuthentication().withUser(user.username("koi").password("password").roles("EMPLOYEE", "ADMIN"));
 //        auth.inMemoryAuthentication().withUser(user.username("an").password("password").roles("EMPLOYEE"));
         auth.userDetailsService(myUserDetailsService);
+        auth.userDetailsService(myUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -48,5 +51,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().permitAll()
                 .and()
                 .exceptionHandling().accessDeniedPage("/access-denied");
+    }
+
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
