@@ -22,8 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 // Any request must be authenticated (must be logged in)
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/resources/**").permitAll()
+                .anyRequest().authenticated()
+                .antMatchers("/").hasRole("EMPLOYEE")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 // URL for custome login page
@@ -34,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Allow everyone to see login page
                 .permitAll()
                 .and()
-                .logout()
-                .permitAll();
+                .logout().permitAll();
     }
 }
