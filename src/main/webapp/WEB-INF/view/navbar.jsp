@@ -20,7 +20,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin">Admin</a>
             </li>
         </ul>
         <form:form method="post" action="${pageContext.request.contextPath}/logout" class="form-inline my-2 my-lg-0">

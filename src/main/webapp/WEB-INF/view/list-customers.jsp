@@ -11,7 +11,7 @@
 </head>
 <body>
     <c:import url="navbar.jsp"/>
-    <div class="d-flex justify-content-center pb-5">
+    <div class="d-flex justify-content-center pb-2">
         <h2>Welcome to CRM System - <security:authentication property="principal.username"/></h2>
     </div>
     <div class="d-flex justify-content-center pb-3">
